@@ -1,99 +1,132 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Database, Code } from 'lucide-react';
+import { Layout, Server, Database, Wrench, CheckCircle2, Code, Terminal, Cpu } from 'lucide-react';
+
+const capabilityGroups = [
+  {
+    title: 'Frontend Development',
+    icon: <Layout className="h-6 w-6 text-accent-400" />,
+    description: 'Crafting responsive, high-performance user interfaces with modern React paradigms and component libraries.',
+    items: ['React 19 & Hooks', 'Tailwind CSS & Modern CSS', 'Redux Toolkit & Context', 'Responsive Layouts & Motion'],
+  },
+  {
+    title: 'Backend Engineering',
+    icon: <Server className="h-6 w-6 text-accent-400" />,
+    description: 'Architecting robust RESTful API endpoints, authentication mechanisms, and server side logic.',
+    items: ['Node.js Runtime', 'Express.js Framework', 'REST API Architecture', 'JWT Auth & Middleware'],
+  },
+  {
+    title: 'Database & Data Systems',
+    icon: <Database className="h-6 w-6 text-accent-400" />,
+    description: 'Designing structured document database schemas, aggregation pipelines, and data management flows.',
+    items: ['MongoDB Atlas', 'Mongoose ODM', 'Data Modeling & Indexes', 'CRUD Operations'],
+  },
+  {
+    title: 'Tooling & Deployment',
+    icon: <Wrench className="h-6 w-6 text-accent-400" />,
+    description: 'Maintaining smooth development workflows, continuous deployment, and performance monitoring.',
+    items: ['Vite Build Tool', 'Vercel & Render Hosting', 'Git & GitHub Workflows', 'Postman API Testing'],
+  },
+];
 
 const About = () => {
-  const cards = [
-    {
-      icon: <Code className="w-8 h-8 text-[#38bdf8]" />,
-      title: 'Frontend Development',
-      desc: 'Creating pixel-perfect, responsive, and accessible user interfaces using React and modern CSS frameworks.'
-    },
-    {
-      icon: <Terminal className="w-8 h-8 text-[#c084fc]" />,
-      title: 'Backend Development',
-      desc: 'Building robust, scalable RESTful APIs and server-side logic using Node.js and Express.'
-    },
-    {
-      icon: <Database className="w-8 h-8 text-[#e879f9]" />,
-      title: 'Database Management',
-      desc: 'Designing efficient database schemas and managing data flow with MongoDB and Mongoose.'
-    }
-  ];
-
   return (
-    <section id="about" className="py-24 px-6 md:px-12 relative z-10">
-      <div className="container mx-auto">
+    <section id="about" className="relative z-10 px-6 py-28 md:px-12 lg:px-16">
+      <div className="container mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-            About <span className="text-gradient">Me</span>
+          <div className="mx-auto mb-3 flex w-fit items-center gap-2 rounded-full border border-accent-500/20 bg-accent-500/10 px-4 py-1.5 text-xs font-mono font-semibold uppercase tracking-[0.25em] text-accent-400">
+            <Code className="h-3.5 w-3.5" /> About & Expertise
+          </div>
+          <h2 className="font-display text-3xl font-extrabold text-slate-900 sm:text-4xl lg:text-5xl dark:text-white">
+            Engineering products with <span className="text-gradient">precision & purpose</span>.
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#38bdf8] to-[#c084fc] mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-stretch">
+          {/* Main Narrative Card */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
-            className="glass-card p-8 rounded-2xl relative overflow-hidden"
+            className="glass-card flex flex-col justify-between rounded-3xl p-8 sm:p-10 border border-slate-200/80 dark:border-slate-800/80"
           >
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-[#38bdf8] rounded-full blur-[80px] opacity-20"></div>
-            <div className="absolute -bottom-24 -left-24 w-48 h-48 bg-[#c084fc] rounded-full blur-[80px] opacity-20"></div>
+            <div>
+              <div className="mb-6 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-500/10 text-accent-400">
+                  <Terminal className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl font-bold text-slate-900 dark:text-white">Full-Stack MERN Developer</h3>
+                  <p className="text-xs font-mono text-slate-500 dark:text-slate-400">Based in Bangalore, India</p>
+                </div>
+              </div>
 
-            {/* <h3 className="text-2xl font-display font-bold mb-4 text-white">Professional Summary</h3>
-            <p className="text-gray-300 leading-relaxed mb-6">
-              I am a passionate Full Stack Developer with a strong foundation in the MERN stack. As a recent graduate, I've dedicated myself to mastering modern web technologies and building applications that solve real-world problems.
-            </p>
-            <p className="text-gray-300 leading-relaxed mb-6">
-              My journey in tech is driven by an insatiable curiosity and a deep love for problem-solving. Whether it's architecting a complex database schema or fine-tuning a CSS animation, I approach every challenge with enthusiasm and a commitment to continuous learning.
-            </p> */}
-            <h3 className="text-2xl font-display font-bold mb-4 text-white">
-              Professional Summary
-            </h3>
+              <p className="text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
+                I specialize in building full-stack web applications using the MERN stack (<strong className="text-slate-900 dark:text-white font-semibold">MongoDB, Express.js, React, Node.js</strong>). My approach blends technical rigour with clean UI design to build products that are fast, intuitive, and reliable.
+              </p>
 
-            <p className="text-gray-300 leading-relaxed mb-6">
-              MERN Stack Developer and Computer Science graduate with experience in developing full-stack web applications using MongoDB, Express.js, React, and Node.js. Skilled in creating responsive frontend interfaces, building RESTful APIs, database management, authentication, and deploying applications. Passionate about writing clean, maintainable code and delivering efficient solutions to real-world problems.
-            </p>
+              <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-300">
+                Whether implementing real-time tracking platforms, multi-tenant parking rental systems, or expense management dashboards, I focus on clean component architectures, robust API services, and smooth user interactions.
+              </p>
+            </div>
 
-            <p className="text-gray-300 leading-relaxed mb-6">
-              Strong foundation in JavaScript, React, Node.js, and MongoDB, with hands-on experience through academic and personal projects. Seeking opportunities to contribute to dynamic development teams while continuously expanding my technical expertise and building scalable web applications.
-            </p>
-
-            <div className="flex flex-wrap gap-3 mt-8">
-              {['Problem Solver', 'Continuous Learner', 'Team Player', 'Detail Oriented'].map((trait, i) => (
-                <span key={i} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-[#c084fc]">
-                  {trait}
-                </span>
+            <div className="mt-8 grid grid-cols-2 gap-3 pt-6 border-t border-slate-200/70 dark:border-slate-800">
+              {[
+                { title: 'Clean Code Standard', desc: 'Maintainable & modular' },
+                { title: 'API Integration', desc: 'Secure & efficient REST' },
+                { title: 'User Experience', desc: 'Polished & intuitive UI' },
+                { title: 'Problem Solver', desc: 'Analytical & fast learner' },
+              ].map((item) => (
+                <div key={item.title} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="h-4 w-4 text-accent-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-semibold text-slate-900 dark:text-white">{item.title}</p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400">{item.desc}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </motion.div>
 
-          <div className="grid gap-6">
-            {cards.map((card, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="glass p-6 rounded-xl border border-white/5 hover:bg-white/5 transition-all group flex items-start gap-4"
+          {/* Capabilities Grid */}
+          <div className="grid gap-4 sm:grid-cols-2">
+            {capabilityGroups.map((group, index) => (
+              <motion.article
+                key={group.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
+                className="glass-card group flex flex-col justify-between rounded-3xl p-6 transition duration-300 hover:-translate-y-1 hover:border-accent-500/40"
               >
-                <div className="p-3 rounded-lg bg-white/5 border border-white/10 group-hover:scale-110 transition-transform">
-                  {card.icon}
-                </div>
                 <div>
-                  <h4 className="text-xl font-bold text-white mb-2">{card.title}</h4>
-                  <p className="text-gray-400 text-sm leading-relaxed">{card.desc}</p>
+                  <div className="mb-4 flex items-center justify-between">
+                    <div className="rounded-2xl bg-accent-500/10 p-3 text-accent-400">
+                      {group.icon}
+                    </div>
+                    <Cpu className="h-4 w-4 text-slate-400 opacity-50 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                  <h4 className="font-display text-lg font-bold text-slate-900 dark:text-white mb-2">{group.title}</h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">{group.description}</p>
                 </div>
-              </motion.div>
+
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-200/50 dark:border-slate-800/50">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-lg bg-slate-100/80 px-2.5 py-1 text-xs font-mono font-medium text-slate-700 dark:bg-slate-800/70 dark:text-slate-300"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.article>
             ))}
           </div>
         </div>

@@ -1,66 +1,79 @@
-import React from 'react';
 import { motion } from 'framer-motion';
+import { Cpu, Layers, Sparkles } from 'lucide-react';
+import { FaReact, FaNodeJs, FaEnvira, FaJs, FaGitAlt } from 'react-icons/fa';
+import { SiExpress, SiTailwindcss, SiRedux, SiPostman, SiVercel } from 'react-icons/si';
 
-const skills = [
-  { name: 'HTML5', level: 90, color: 'from-orange-400 to-red-500' },
-  { name: 'CSS3', level: 85, color: 'from-blue-400 to-blue-600' },
-  { name: 'JavaScript', level: 85, color: 'from-yellow-300 to-yellow-500' },
-  { name: 'React.js', level: 80, color: 'from-cyan-400 to-blue-500' },
-  { name: 'Redux Toolkit', level: 75, color: 'from-purple-400 to-purple-600' },
-  { name: 'Node.js', level: 75, color: 'from-green-400 to-green-600' },
-  { name: 'Express.js', level: 80, color: 'from-gray-400 to-gray-600' },
-  { name: 'MongoDB', level: 85, color: 'from-green-500 to-emerald-700' },
-  { name: 'Mongoose', level: 80, color: 'from-red-400 to-red-600' },
-  { name: 'Git & GitHub', level: 85, color: 'from-gray-600 to-gray-800' },
-  { name: 'Tailwind CSS', level: 90, color: 'from-teal-400 to-cyan-500' },
-  { name: 'Postman', level: 85, color: 'from-orange-500 to-red-500' },
+const skillItems = [
+  { name: 'React', level: 'Frontend Library', icon: <FaReact className="h-6 w-6 text-[#61dafb]" />, desc: 'JSX, Custom Hooks, Context, Virtual DOM' },
+  { name: 'Node.js', level: 'Runtime Environment', icon: <FaNodeJs className="h-6 w-6 text-[#68a063]" />, desc: 'Event Loop, Non-blocking I/O, Modules' },
+  { name: 'Express.js', level: 'Backend Framework', icon: <SiExpress className="h-6 w-6 text-slate-200" />, desc: 'Routing, Middleware, REST APIs, Auth' },
+  { name: 'MongoDB', level: 'NoSQL Database', icon: <FaEnvira className="h-6 w-6 text-[#47a248]" />, desc: 'Document Schema, Mongoose, Aggregations' },
+  { name: 'JavaScript ES6+', level: 'Core Language', icon: <FaJs className="h-6 w-6 text-[#f7df1e]" />, desc: 'Promises, Async/Await, ES Modules, Arrays' },
+  { name: 'Tailwind CSS', level: 'Styling Engine', icon: <SiTailwindcss className="h-6 w-6 text-[#38bdf8]" />, desc: 'Utility First, Flex/Grid, Custom Themes' },
+  { name: 'Redux Toolkit', level: 'State Management', icon: <SiRedux className="h-6 w-6 text-[#764abc]" />, desc: 'Slices, Global State, Async Thunks' },
+  { name: 'Git & GitHub', level: 'Version Control', icon: <FaGitAlt className="h-6 w-6 text-[#f05032]" />, desc: 'Branching, Pull Requests, Versioning' },
+  { name: 'Postman & Vercel', level: 'DevOps & Testing', icon: <SiPostman className="h-6 w-6 text-[#ff6c37]" />, desc: 'API Testing, Serverless Deployments' },
+];
+
+const techMarqueeList = [
+  'React 19', 'Node.js', 'Express.js', 'MongoDB', 'JavaScript ES6+',
+  'Tailwind CSS', 'Redux Toolkit', 'REST APIs', 'JWT Auth', 'Git', 'Vite'
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 px-6 md:px-12 relative z-10">
-      <div className="container mx-auto max-w-6xl">
+    <section id="skills" className="relative z-10 px-6 py-28 md:px-12 lg:px-16 overflow-hidden">
+      <div className="container mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-            Technical <span className="text-gradient">Skills</span>
+          <div className="mx-auto mb-3 flex w-fit items-center gap-2 rounded-full border border-accent-500/20 bg-accent-500/10 px-4 py-1.5 text-xs font-mono font-semibold uppercase tracking-[0.25em] text-accent-400">
+            <Layers className="h-3.5 w-3.5" /> Tech Stack & Tools
+          </div>
+          <h2 className="font-display text-3xl font-extrabold text-slate-900 sm:text-4xl lg:text-5xl dark:text-white">
+            Core technologies powering my <span className="text-gradient">builds</span>.
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#38bdf8] to-[#c084fc] mx-auto rounded-full"></div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass p-6 rounded-2xl hover:bg-white/5 transition-all group"
+        {/* Marquee Strip */}
+        <div className="mb-14 overflow-hidden rounded-2xl border border-slate-200/60 bg-white/40 py-4 shadow-sm backdrop-blur-md dark:border-slate-800/60 dark:bg-slate-900/40">
+          <div className="flex animate-marquee space-x-8 whitespace-nowrap">
+            {[...techMarqueeList, ...techMarqueeList].map((item, idx) => (
+              <span key={idx} className="flex items-center gap-2 font-mono text-sm font-semibold text-slate-700 dark:text-slate-300">
+                <Sparkles className="h-3.5 w-3.5 text-accent-400" />
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Grid Cards */}
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {skillItems.map((skill, index) => (
+            <motion.article
+              key={skill.name}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="glass-card group relative rounded-3xl p-6 transition duration-300 hover:-translate-y-1 hover:border-accent-500/40"
             >
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-bold text-white">{skill.name}</h3>
-                <span className="text-sm font-medium text-gray-400 group-hover:text-white transition-colors">
-                  {skill.level}%
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-slate-900/5 dark:bg-white/5 border border-slate-200/50 dark:border-slate-800/80">
+                  {skill.icon}
+                </div>
+                <span className="rounded-full bg-accent-500/10 px-3 py-1 font-mono text-[11px] font-semibold text-accent-400">
+                  {skill.level}
                 </span>
               </div>
-              <div className="w-full h-2 bg-white/10 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.5 + index * 0.1, ease: "easeOut" }}
-                  className={`h-full rounded-full bg-gradient-to-r ${skill.color} relative`}
-                >
-                  <div className="absolute inset-0 bg-white/20 animate-pulse"></div>
-                </motion.div>
-              </div>
-            </motion.div>
+
+              <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white mb-1">{skill.name}</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-400 font-mono leading-relaxed">{skill.desc}</p>
+            </motion.article>
           ))}
         </div>
       </div>

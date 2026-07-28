@@ -1,28 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import Education from './components/Education';
-import GitHubStats from './components/GitHubStats';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import ThreeBackground from './components/ThreeBackground';
 import MouseGlow from './components/MouseGlow';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Code2 } from 'lucide-react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Terminal, Sparkles } from 'lucide-react';
+
+const Education = lazy(() => import('./components/Education'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    const savedTheme = window.localStorage.getItem('portfolio-theme');
+    return savedTheme ? savedTheme === 'dark' : true;
+  });
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [cursorActive, setCursorActive] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
-    // Simulate loading time for the loading screen animation
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
+    const timer = window.setTimeout(() => setLoading(false), 900);
+    return () => window.clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDark);
+    document.documentElement.classList.toggle('theme-dark', isDark);
+    document.documentElement.classList.toggle('theme-light', !isDark);
+    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+    window.localStorage.setItem('portfolio-theme', isDark ? 'dark' : 'light');
+  }, [isDark]);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+
+    const handlePointerMove = (event) => {
+      setCursorPosition({ x: event.clientX, y: event.clientY });
+    };
+    const handlePointerDown = () => setCursorActive(true);
+    const handlePointerUp = () => setCursorActive(false);
+
+    window.addEventListener('mousemove', handlePointerMove);
+    window.addEventListener('mousedown', handlePointerDown);
+    window.addEventListener('mouseup', handlePointerUp);
+
+    return () => {
+      window.removeEventListener('mousemove', handlePointerMove);
+      window.removeEventListener('mousedown', handlePointerDown);
+      window.removeEventListener('mouseup', handlePointerUp);
+    };
+  }, [prefersReducedMotion]);
 
   return (
     <>
@@ -31,47 +64,54 @@ function App() {
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[100] bg-[#0f172a] flex flex-col items-center justify-center"
+            transition={{ duration: 0.4 }}
+            className="fixed inset-0 z-[120] flex flex-col items-center justify-center bg-obsidian-950 text-slate-100"
           >
             <motion.div
-              animate={{ 
-                scale: [1, 1.2, 1],
-                rotate: [0, 180, 360]
-              }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="text-[#38bdf8] mb-4"
+              animate={{ scale: [1, 1.08, 1], rotate: [0, 180, 360] }}
+              transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+              className="mb-5 rounded-2xl border border-accent-500/30 bg-accent-500/10 p-4 text-accent-400 shadow-glow"
             >
-              <Code2 className="w-16 h-16" />
+              <Terminal className="h-10 w-10" />
             </motion.div>
-            <h1 className="text-2xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#38bdf8] to-[#c084fc] animate-pulse">
-              Loading Portfolio...
-            </h1>
+            <div className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.3em] text-slate-300">
+              <Sparkles className="h-4 w-4 text-accent-400 animate-pulse" />
+              Initialising Portfolio...
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="relative w-full min-h-screen font-sans selection:bg-[#c084fc]/30 selection:text-white">
+      <div className={`relative min-h-screen overflow-x-hidden font-sans text-slate-900 transition-colors duration-500 dark:text-slate-100 ${isDark ? 'theme-dark bg-obsidian-950' : 'theme-light bg-slate-50'}`}>
+        {!prefersReducedMotion && (
+          <div className="pointer-events-none fixed inset-0 z-[60] hidden md:block">
+            <motion.div
+              animate={{ x: cursorPosition.x - 14, y: cursorPosition.y - 14, scale: cursorActive ? 0.75 : 1 }}
+              transition={{ duration: 0.15, ease: 'circOut' }}
+              className="absolute h-7 w-7 rounded-full border border-accent-400/60 bg-accent-400/10 backdrop-blur-xs"
+            />
+          </div>
+        )}
+
         <ThreeBackground />
         <MouseGlow />
-        
-        <Navbar />
-        
+
+        <Navbar isDark={isDark} setIsDark={setIsDark} />
+
         <main className="relative z-10">
           <Hero />
           <About />
           <Skills />
           <Projects />
-          <Education />
-          {/* <GitHubStats /> */}
-          <Contact />
+          <Suspense fallback={null}>
+            <Education />
+            <Contact />
+          </Suspense>
         </main>
 
-        <Footer />
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
       </div>
     </>
   );

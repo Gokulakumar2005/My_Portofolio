@@ -1,233 +1,134 @@
-// import React from 'react';
-// import { motion } from 'framer-motion';
-// import { ExternalLink, Code2 } from 'lucide-react';
-// import { FaGithub } from 'react-icons/fa';
-
-// const projects = [
-//   {
-//     title: 'Rental Parking System',
-//     desc: 'A comprehensive solution for parking management with authentication, real-time booking, and secure payment integration and Live Chat Between two User of the system .',
-//     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
-//     image: 'bg-gradient-to-br from-blue-500 to-cyan-500',
-//     icon: <Code2 className="w-12 h-12 text-white/50" />,
-//     demoUrl: 'https://mern-rental-parking-system-frontend.onrender.com/home',
-//     githubUrl: 'https://github.com/Gokulakumar2005/MERN-location-Tracker'
-//   },
-//   {
-//     title: 'Location Tracker',
-//     desc: 'A full-stack e-commerce platform featuring product browsing, shopping cart functionality, secure checkout, and user authentication.',
-//     tech: ['React', 'Express.js', 'MongoDB'],
-//     image: 'bg-gradient-to-br from-purple-500 to-pink-500',
-//     icon: <Code2 className="w-12 h-12 text-white/50" />,
-//     demoUrl: '#',
-//     githubUrl: 'https://github.com/Gokulakumar2005/MERN-location-Tracker'
-//   },
-//   {
-//     title: 'Expense Tracker',
-//     desc: 'An interactive real-time chat application allowing users to create rooms, send direct messages, and see online statuses.',
-//     tech: [ 'React', 'Express.js', 'Express'],
-//     image: 'bg-gradient-to-br from-emerald-500 to-teal-500',
-//     icon: <Code2 className="w-12 h-12 text-white/50" />,
-//     demoUrl: '#',
-//     githubUrl: 'https://github.com/Gokulakumar2005/MERN-Expenses-App'
-//   }
-// ];
-
-// const Projects = () => {
-//   return (
-//     <section id="projects" className="py-24 px-6 md:px-12 relative z-10">
-//       <div className="container mx-auto">
-//         <motion.div
-//           initial={{ opacity: 0, y: 50 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true, margin: "-100px" }}
-//           transition={{ duration: 0.6 }}
-//           className="text-center mb-16"
-//         >
-//           <h2 className="text-4xl md:text-5xl font-display font-bold mb-4">
-//             Featured <span className="text-gradient">Projects</span>
-//           </h2>
-//           <div className="w-24 h-1 bg-gradient-to-r from-[#38bdf8] to-[#c084fc] mx-auto rounded-full"></div>
-//         </motion.div>
-
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-//           {projects.map((project, index) => (
-//             <motion.div
-//               key={index}
-//               initial={{ opacity: 0, y: 50 }}
-//               whileInView={{ opacity: 1, y: 0 }}
-//               viewport={{ once: true, margin: "-100px" }}
-//               transition={{ duration: 0.5, delay: index * 0.2 }}
-//               className="group perspective"
-//             >
-//               <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col transform transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] border border-white/10 hover:border-white/20">
-//                 {/* Project Image Placeholder */}
-//                 <div className={`h-48 w-full ${project.image} relative overflow-hidden flex items-center justify-center`}>
-//                   <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
-//                   {project.icon}
-//                   {/* Hover Overlay */}
-//                   <div className="absolute inset-0 bg-[#0f172a]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm">
-//                     <a href={project.demoUrl} className="p-3 bg-white/10 hover:bg-[#38bdf8] rounded-full text-white transition-colors transform hover:scale-110">
-//                       <ExternalLink className="w-6 h-6" />
-//                     </a>
-//                     <a href={project.githubUrl} className="p-3 bg-white/10 hover:bg-[#c084fc] rounded-full text-white transition-colors transform hover:scale-110">
-//                       <FaGithub className="w-6 h-6" />
-//                     </a>
-//                   </div>
-//                 </div>
-
-//                 <div className="p-6 flex flex-col flex-grow">
-//                   <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#38bdf8] group-hover:to-[#c084fc] transition-all">
-//                     {project.title}
-//                   </h3>
-//                   <p className="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
-//                     {project.desc}
-//                   </p>
-//                   <div className="flex flex-wrap gap-2 mt-auto">
-//                     {project.tech.map((t, i) => (
-//                       <span key={i} className="text-xs font-medium px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300">
-//                         {t}
-//                       </span>
-//                     ))}
-//                   </div>
-//                 </div>
-//               </div>
-//             </motion.div>
-//           ))}
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Projects;
-
-
-import React from "react";
-import { motion } from "framer-motion";
-import { ExternalLink, Code2 } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
+import { motion } from 'framer-motion';
+import { ExternalLink, FolderGit2, Sparkles, AlertCircle, CheckCircle } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
 
 const projects = [
   {
-    title: "Rental Parking System",
-    desc: "A comprehensive parking management solution with JWT authentication, real-time slot booking, secure payment integration, and live chat functionality between users.",
-    tech: ["React","Redux", "Node.js", "Express.js", "MongoDB"],
-    image: "bg-gradient-to-br from-blue-500 to-cyan-500",
-    icon: <Code2 className="w-12 h-12 text-white/50" />,
-    demoUrl:
-      "https://mern-rental-parking-system-frontend.onrender.com/home",
-    githubUrl:
-      "https://github.com/Gokulakumar2005/MERN-Rental-Parking-System",
+    title: 'Rental Parking System',
+    category: 'Full-Stack MERN Platform',
+    summary: 'A comprehensive parking space rental platform enabling seamless slot discovery, online reservations, user role management, and direct booking flows.',
+    problem: 'Drivers wasted time looking for available parking while slot owners lacked a simple platform to monetize empty spaces.',
+    solution: 'Engineered a role-based marketplace with real-time reservation states, user chat integration, and responsive administrative controls.',
+    tech: ['React', 'Redux Toolkit', 'Node.js', 'Express.js', 'MongoDB', 'Tailwind CSS'],
+    demoUrl: 'https://mern-rental-parking-system-frontend.onrender.com/home',
+    githubUrl: 'https://github.com/Gokulakumar2005/MERN-Rental-Parking-System',
+    badgeColor: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30',
+    coverGradient: 'from-emerald-950/80 via-slate-900 to-obsidian-950',
+    accentBorder: 'hover:border-emerald-500/50',
   },
   {
-    title: "Location Tracker",
-    desc: "A real-time location tracking application that enables users to track and share locations seamlessly using geolocation technologies.",
-    tech: ["React", "Node.js", "Express.js", "MongoDB"],
-    image: "bg-gradient-to-br from-purple-500 to-pink-500",
-    icon: <Code2 className="w-12 h-12 text-white/50" />,
+    title: 'Expenses Tracker',
+    category: 'Financial Management App',
+    summary: 'An intuitive personal finance application designed for tracking daily income, expenses, category breakdowns, and financial movement.',
+    problem: 'Traditional financial tools were overly complex or lacked clean visual summaries for quick daily expense logging.',
+    solution: 'Designed an elegant dashboard with fast transaction entry, dynamic category grouping, and cash flow visualizations.',
+    tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Chart UI', 'REST API'],
     demoUrl: null,
-    githubUrl:
-      "https://github.com/Gokulakumar2005/MERN-location-Tracker",
+    githubUrl: 'https://github.com/Gokulakumar2005/MERN-Expenses-App',
+    badgeColor: 'bg-cyan-500/10 text-cyan-400 border-cyan-500/30',
+    coverGradient: 'from-cyan-950/80 via-slate-900 to-obsidian-950',
+    accentBorder: 'hover:border-cyan-500/50',
   },
   {
-    title: "Expense Tracker",
-    desc: "A full-stack expense management application that helps users monitor income, expenses, and financial activities efficiently.",
-    tech: ["React", "Node.js", "Express.js", "MongoDB"],
-    image: "bg-gradient-to-br from-emerald-500 to-teal-500",
-    icon: <Code2 className="w-12 h-12 text-white/50" />,
+    title: 'Location Tracker',
+    category: 'Real-Time Web Application',
+    summary: 'A real-time location tracking tool built for sharing current geolocation coordinates, tracking markers, and dynamic map updates.',
+    problem: 'Need for a lightweight, low-latency location update interface without requiring complex native apps.',
+    solution: 'Built a web-first tracking interface using HTML5 Geolocation APIs and responsive client-server syncing.',
+    tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Geolocation API'],
     demoUrl: null,
-    githubUrl:
-      "https://github.com/Gokulakumar2005/MERN-Expenses-App",
+    githubUrl: 'https://github.com/Gokulakumar2005/MERN-location-Tracker',
+    badgeColor: 'bg-teal-500/10 text-teal-400 border-teal-500/30',
+    coverGradient: 'from-teal-950/80 via-slate-900 to-obsidian-950',
+    accentBorder: 'hover:border-teal-500/50',
   },
 ];
 
 const Projects = () => {
   return (
-    <section
-      id="projects"
-      className="py-24 px-6 md:px-12 relative z-10"
-    >
-      <div className="container mx-auto">
-        {/* Section Heading */}
+    <section id="projects" className="relative z-10 px-6 py-28 md:px-12 lg:px-16">
+      <div className="container mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mb-16 text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 text-white">
-            Featured <span className="text-gradient">Projects</span>
+          <div className="mx-auto mb-3 flex w-fit items-center gap-2 rounded-full border border-accent-500/20 bg-accent-500/10 px-4 py-1.5 text-xs font-mono font-semibold uppercase tracking-[0.25em] text-accent-400">
+            <FolderGit2 className="h-3.5 w-3.5" /> Featured Work
+          </div>
+          <h2 className="font-display text-3xl font-extrabold text-slate-900 sm:text-4xl lg:text-5xl dark:text-white">
+            Case studies & <span className="text-gradient">recent builds</span>.
           </h2>
-
-          <div className="w-24 h-1 bg-gradient-to-r from-[#38bdf8] to-[#c084fc] mx-auto rounded-full"></div>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid gap-8 lg:grid-cols-3">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.2,
-              }}
-              className="group"
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className={`glass-card group flex flex-col justify-between overflow-hidden rounded-3xl transition duration-500 hover:-translate-y-1.5 ${project.accentBorder}`}
             >
-              <div className="glass-card rounded-2xl overflow-hidden h-full flex flex-col transition-all duration-500 hover:scale-105 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] border border-white/10 hover:border-white/20">
-                {/* Project Banner */}
-                <div
-                  className={`h-48 w-full ${project.image} relative overflow-hidden flex items-center justify-center`}
-                >
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500"></div>
+              <div>
+                {/* Visual Cover Banner with Mockup Motif */}
+                <div className={`relative h-48 w-full overflow-hidden bg-gradient-to-br ${project.coverGradient} p-6 border-b border-slate-200/50 dark:border-slate-800/80`}>
+                  <div className="flex items-center justify-between">
+                    <span className={`rounded-full border px-3 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider ${project.badgeColor}`}>
+                      {project.category}
+                    </span>
+                    <Sparkles className="h-4 w-4 text-white/60 group-hover:text-accent-400 transition-colors" />
+                  </div>
 
-                  {project.icon}
+                  <div className="mt-8">
+                    <h3 className="font-display text-2xl font-bold text-white transition duration-300 group-hover:text-accent-400">
+                      {project.title}
+                    </h3>
+                  </div>
 
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-[#0f172a]/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm">
-                    {project.demoUrl && (
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-3 bg-white/10 hover:bg-[#38bdf8] rounded-full text-white transition-all duration-300 hover:scale-110"
-                        aria-label="View Demo"
-                      >
-                        <ExternalLink className="w-6 h-6" />
-                      </a>
-                    )}
-
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-white/10 hover:bg-[#c084fc] rounded-full text-white transition-all duration-300 hover:scale-110"
-                      aria-label="View Source Code"
-                    >
-                      <FaGithub className="w-6 h-6" />
-                    </a>
+                  {/* Decorative Terminal Line in Cover */}
+                  <div className="absolute bottom-3 left-6 right-6 flex items-center gap-2 rounded-xl bg-slate-900/60 px-3 py-1.5 backdrop-blur-md text-[11px] font-mono text-slate-300 border border-white/10">
+                    <span className="h-2 w-2 rounded-full bg-accent-400 animate-pulse" />
+                    <span>MERN Stack Project</span>
                   </div>
                 </div>
 
-                {/* Project Content */}
-                <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-[#38bdf8] group-hover:to-[#c084fc] transition-all duration-300">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-gray-400 text-sm leading-relaxed flex-grow mb-6">
-                    {project.desc}
+                {/* Content Section */}
+                <div className="p-6 space-y-5">
+                  <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                    {project.summary}
                   </p>
 
-                  <div className="flex flex-wrap gap-2">
+                  {/* Problem & Solution Blocks */}
+                  <div className="space-y-3">
+                    <div className="rounded-2xl border border-slate-200/70 bg-slate-50/70 p-3.5 dark:border-slate-800/80 dark:bg-slate-900/60">
+                      <div className="flex items-center gap-2 text-xs font-mono font-semibold text-rose-500 dark:text-rose-400">
+                        <AlertCircle className="h-3.5 w-3.5" /> PROBLEM
+                      </div>
+                      <p className="mt-1 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                        {project.problem}
+                      </p>
+                    </div>
+
+                    <div className="rounded-2xl border border-slate-200/70 bg-slate-50/70 p-3.5 dark:border-slate-800/80 dark:bg-slate-900/60">
+                      <div className="flex items-center gap-2 text-xs font-mono font-semibold text-accent-400">
+                        <CheckCircle className="h-3.5 w-3.5" /> SOLUTION
+                      </div>
+                      <p className="mt-1 text-xs leading-relaxed text-slate-600 dark:text-slate-300">
+                        {project.solution}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Tech Tags */}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="text-xs font-medium px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-300"
+                        className="rounded-lg bg-slate-100/80 px-2.5 py-1 text-[11px] font-mono font-medium text-slate-700 dark:bg-slate-800/70 dark:text-slate-300"
                       >
                         {tech}
                       </span>
@@ -235,7 +136,34 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+
+              {/* Action Buttons Footer */}
+              <div className="flex items-center gap-3 p-6 pt-0 border-t border-transparent">
+                {project.demoUrl ? (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-accent-500 px-4 py-2.5 text-xs font-bold text-slate-950 transition duration-300 hover:bg-accent-400 shadow-glow"
+                  >
+                    Live Demo <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                ) : (
+                  <span className="flex flex-1 items-center justify-center gap-1 rounded-xl border border-slate-200/50 bg-slate-100/50 px-4 py-2.5 text-xs font-mono text-slate-400 dark:border-slate-800 dark:bg-slate-900/40">
+                    Source Available
+                  </span>
+                )}
+
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 rounded-xl border border-slate-300/80 bg-white/70 px-4 py-2.5 text-xs font-semibold text-slate-800 backdrop-blur-md transition duration-300 hover:border-accent-400 hover:text-accent-400 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-200"
+                >
+                  <FaGithub className="h-4 w-4" /> Code
+                </a>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
