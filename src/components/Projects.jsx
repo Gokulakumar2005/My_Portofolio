@@ -41,7 +41,19 @@ const projects = [
     badgeColor: 'bg-teal-500/10 text-teal-400 border-teal-500/30',
     coverGradient: 'from-teal-950/80 via-slate-900 to-obsidian-950',
     accentBorder: 'hover:border-teal-500/50',
-  },
+  },{
+    title: 'Laptop Configuration Quotation System',
+    category: 'Full-Stack Web Application',
+    summary: 'A web app for configuring laptop specs and generating instant price quotations, with secure user authentication.',
+    problem: 'Need for an easy way for users to build a custom laptop configuration and get a quotation without manual back-and-forth.',
+    solution: 'Built a full-stack app with a React frontend and an Express/MongoDB backend, using JWT-based authentication to manage user sessions and a configurator flow to calculate quotations in real time.',
+    tech: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT'],
+    demoUrl: 'https://assignment-1-1-7vjp.onrender.com/login',
+    githubUrl: 'https://github.com/Gokulakumar2005/Assignment_1',
+    badgeColor: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30',
+    coverGradient: 'from-indigo-950/80 via-slate-900 to-obsidian-950',
+    accentBorder: 'hover:border-indigo-500/50',
+},
 ];
 
 const Projects = () => {
