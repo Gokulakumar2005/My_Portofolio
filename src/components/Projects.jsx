@@ -41,7 +41,7 @@ const projects = [
     badgeColor: 'bg-teal-500/10 text-teal-400 border-teal-500/30',
     coverGradient: 'from-teal-950/80 via-slate-900 to-obsidian-950',
     accentBorder: 'hover:border-teal-500/50',
-  },{
+  },  {
     title: 'Laptop Configuration Quotation System',
     category: 'Full-Stack Web Application',
     summary: 'A web app for configuring laptop specs and generating instant price quotations, with secure user authentication.',
@@ -53,7 +53,33 @@ const projects = [
     badgeColor: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30',
     coverGradient: 'from-indigo-950/80 via-slate-900 to-obsidian-950',
     accentBorder: 'hover:border-indigo-500/50',
-},
+  },
+  {
+    title: 'PocketTrack — Expense Tracker Mobile App',
+    category: 'Full-Stack Mobile App',
+    summary: 'A cross-platform personal finance mobile app enabling real-time expense tracking, category-wise monthly budgets, financial analytics, and secure JWT session persistence.',
+    problem: 'Users needed a fast, offline-ready mobile tool to monitor personal expenses and enforce category budgets without cumbersome spreadsheets.',
+    solution: 'Built a React Native (Expo 52) mobile app styled with NativeWind and powered by an Express.js & PostgreSQL backend, utilizing Redux Toolkit and JWT auth with auto-refresh tokens.',
+    tech: ['React Native', 'Expo', 'Redux Toolkit', 'NativeWind', 'Node.js', 'Express.js', 'PostgreSQL', 'JWT'],
+    demoUrl: '',
+    githubUrl: 'https://github.com/Gokulakumar2005/Expense_Tracker_Mobile_App',
+    badgeColor: 'bg-violet-500/10 text-violet-400 border-violet-500/30',
+    coverGradient: 'from-violet-950/80 via-slate-900 to-obsidian-950',
+    accentBorder: 'hover:border-violet-500/50',
+  },
+  {
+    title: 'Thamizha Constructions — Business Website',
+    category: 'Interactive 3D Business Platform',
+    summary: 'A commercial 3D website built for an architectural and turnkey construction engineering firm in Tamil Nadu, featuring interactive 3D floor models, bilingual support, and live cost estimation.',
+    problem: 'Traditional static construction websites lacked visual engagement to demonstrate structural design and failed to capture instant client quotation requests.',
+    solution: 'Engineered an interactive 3D web experience with React Three Fiber, Lenis smooth scrolling, real-time construction cost calculator, English/Tamil localization, and direct WhatsApp quote dispatch.',
+    tech: ['React', 'Vite', 'Three.js', 'React Three Fiber', 'Tailwind CSS', 'Framer Motion', 'i18next'],
+    demoUrl: 'https://prasanth-website-steel.vercel.app/',
+    githubUrl: 'https://github.com/Gokulakumar2005/prasanth_website',
+    badgeColor: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+    coverGradient: 'from-amber-950/80 via-slate-900 to-obsidian-950',
+    accentBorder: 'hover:border-amber-500/50',
+  },
 ];
 
 const Projects = () => {
@@ -104,7 +130,7 @@ const Projects = () => {
                   {/* Decorative Terminal Line in Cover */}
                   <div className="absolute bottom-3 left-6 right-6 flex items-center gap-2 rounded-xl bg-slate-900/60 px-3 py-1.5 backdrop-blur-md text-[11px] font-mono text-slate-300 border border-white/10">
                     <span className="h-2 w-2 rounded-full bg-accent-400 animate-pulse" />
-                    <span>MERN Stack Project</span>
+                    <span>{project.category}</span>
                   </div>
                 </div>
 
