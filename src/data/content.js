@@ -211,8 +211,12 @@ export const projectsData = [
     highlights: [
       'React Native with Expo 52 and NativeWind styling',
       'Auto-refresh JWT session token persistence',
+      'Direct Android APK build download available',
     ],
     demoUrl: '',
+    apkUrl: '/assets/Expense_Tracker _mobile_App.apk',
+    downloadUrl: '/assets/Expense_Tracker _mobile_App.apk',
+    downloadFileName: 'Expense_Tracker _mobile_App.apk',
     githubUrl: 'https://github.com/Gokulakumar2005/Expense_Tracker_Mobile_App',
     badge: 'MOBILE CROSS-PLATFORM',
     accentColor: '#ec4899',

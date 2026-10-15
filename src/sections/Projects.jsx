@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, FolderGit2, Sparkles, AlertCircle, CheckCircle, Code2, Award, Zap } from 'lucide-react';
+import { ExternalLink, FolderGit2, Sparkles, AlertCircle, CheckCircle, Code2, Award, Zap, Download } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa';
 import { TiltCard } from '../components/TiltCard';
 import { projectsData } from '../data/content';
@@ -224,7 +224,15 @@ export const Projects = () => {
 
                   {/* Footer Buttons */}
                   <div className="mt-6 flex items-center gap-3 pt-4 border-t border-surface-border">
-                    {project.demoUrl ? (
+                    {project.apkUrl || project.downloadUrl ? (
+                      <a
+                        href={project.apkUrl || project.downloadUrl}
+                        download={project.downloadFileName || "Expense_Tracker _mobile_App.apk"}
+                        className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-neon-pink/20 border border-neon-pink/50 px-4 py-2.5 text-xs font-bold text-neon-pink transition-all hover:bg-neon-pink hover:text-white shadow-glow-pink"
+                      >
+                        Download APK <Download className="h-3.5 w-3.5" />
+                      </a>
+                    ) : project.demoUrl ? (
                       <a
                         href={project.demoUrl}
                         target="_blank"
