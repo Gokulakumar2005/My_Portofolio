@@ -5,16 +5,53 @@ import { Link } from 'react-scroll';
 import { ArrowDown, ArrowUpRight, Download, Terminal, Sparkles, Code2, ShieldCheck, Film, Eye, EyeOff } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { personalInfo, codeSnippet } from '../data/content';
-import BackgroundVideoMedia from '../assets/Background_video.mp4';
+import BackgroundVideoMedia from '../assets/Background_video_1.mp4';
 
 export const Hero = () => {
   const videoRef = useRef(null);
   const [isRightSideVisible, setIsRightSideVisible] = useState(true);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
-    }
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+
+    const playVideo = () => {
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(() => {});
+      }
+    };
+
+    playVideo();
+
+    // Ensure non-stop continuous playback without lag or stalling
+    const handleEnded = () => {
+      video.currentTime = 0;
+      playVideo();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        playVideo();
+      }
+    };
+
+    const handlePause = () => {
+      playVideo();
+    };
+
+    video.addEventListener('ended', handleEnded);
+    video.addEventListener('pause', handlePause);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      video.removeEventListener('ended', handleEnded);
+      video.removeEventListener('pause', handlePause);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   return (
@@ -29,12 +66,19 @@ export const Hero = () => {
           autoPlay
           loop
           muted
-          defaultMuted
           playsInline
           preload="auto"
+          disablePictureInPicture
+          disableRemotePlayback
           className="absolute inset-0 h-full w-full object-cover opacity-80"
+          style={{
+            transform: 'translate3d(0, 0, 0)',
+            willChange: 'transform',
+            backfaceVisibility: 'hidden',
+          }}
         >
           <source src={BackgroundVideoMedia} type="video/mp4" />
+          <source src="/videos/Background_video_1.mp4" type="video/mp4" />
           <source src="/videos/Background_video.mp4" type="video/mp4" />
         </video>
         {/* Soft contrast overlay so headline and code text remain crisp */}
